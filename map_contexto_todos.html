@@ -1,0 +1,521 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    
+        <script>
+            L_NO_TOUCH = false;
+            L_DISABLE_3D = false;
+        </script>
+    
+    <style>html, body {width: 100%;height: 100%;margin: 0;padding: 0;}</style>
+    <style>#map {position:absolute;top:0;bottom:0;right:0;left:0;}</style>
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+    
+            <meta name="viewport" content="width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+            <style>
+                #map_18c771483fd0880d8a84c88af73daa4a {
+                    position: relative;
+                    width: 100.0%;
+                    height: 100.0%;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+                .leaflet-container { font-size: 1rem; }
+            </style>
+        
+    
+                    <style>
+                        .foliumtooltip {
+                            
+                        }
+                       .foliumtooltip table{
+                            margin: auto;
+                        }
+                        .foliumtooltip tr{
+                            text-align: left;
+                        }
+                        .foliumtooltip th{
+                            padding: 2px; padding-right: 8px;
+                        }
+                    </style>
+            
+    <script src="https://cdn.jsdelivr.net/gh/ljagis/leaflet-measure@2.1.7/dist/leaflet-measure.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/ljagis/leaflet-measure@2.1.7/dist/leaflet-measure.min.css"/>
+    <script src="https://cdn.jsdelivr.net/gh/ardhi/Leaflet.MousePosition/src/L.Control.MousePosition.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/ardhi/Leaflet.MousePosition/src/L.Control.MousePosition.min.css"/>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet-minimap/3.6.1/Control.MiniMap.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet-minimap/3.6.1/Control.MiniMap.css"/>
+</head>
+<body>
+    
+    
+            <div class="folium-map" id="map_18c771483fd0880d8a84c88af73daa4a" ></div>
+        
+</body>
+<script>
+    
+    
+            var map_18c771483fd0880d8a84c88af73daa4a = L.map(
+                "map_18c771483fd0880d8a84c88af73daa4a",
+                {
+                    center: [-29.62578684567673, -63.12381635508936],
+                    crs: L.CRS.EPSG3857,
+                    zoom: 7,
+                    zoomControl: true,
+                    preferCanvas: false,
+                }
+            );
+            L.control.scale().addTo(map_18c771483fd0880d8a84c88af73daa4a);
+
+            
+
+        
+    
+            var tile_layer_994eceeba15268f476df474a22e519c7 = L.tileLayer(
+                "https://tile.openstreetmap.org/{z}/{x}/{y}.png",
+                {"attribution": "\u0026copy; \u003ca href=\"https://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors", "detectRetina": false, "maxNativeZoom": 19, "maxZoom": 19, "minZoom": 0, "noWrap": false, "opacity": 1, "subdomains": "abc", "tms": false}
+            );
+        
+    
+            tile_layer_994eceeba15268f476df474a22e519c7.addTo(map_18c771483fd0880d8a84c88af73daa4a);
+        
+    
+            var tile_layer_1cee61e48640caebe012318c58155e88 = L.tileLayer(
+                "https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}",
+                {"attribution": "Esri", "detectRetina": false, "maxZoom": 18, "minZoom": 0, "noWrap": false, "opacity": 1, "subdomains": "abc", "tms": false}
+            );
+        
+    
+            tile_layer_1cee61e48640caebe012318c58155e88.addTo(map_18c771483fd0880d8a84c88af73daa4a);
+        
+    
+            var tile_layer_bbb22b8b0e556bad5149bfbda2764ef4 = L.tileLayer(
+                "https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png",
+                {"attribution": "\u0026copy; \u003ca href=\"https://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors \u0026copy; \u003ca href=\"https://carto.com/attributions\"\u003eCARTO\u003c/a\u003e", "detectRetina": false, "maxNativeZoom": 20, "maxZoom": 20, "minZoom": 0, "noWrap": false, "opacity": 1, "subdomains": "abcd", "tms": false}
+            );
+        
+    
+            tile_layer_bbb22b8b0e556bad5149bfbda2764ef4.addTo(map_18c771483fd0880d8a84c88af73daa4a);
+        
+    
+            var tile_layer_b553b55430b562ced58a893260d8572c = L.tileLayer(
+                "https://{s}.tile.opentopomap.org/{z}/{x}/{y}.png",
+                {"attribution": "\u00a9 OpenTopoMap (CC-BY-SA), \u00a9 OpenStreetMap contributors", "detectRetina": false, "maxZoom": 18, "minZoom": 0, "noWrap": false, "opacity": 1, "subdomains": "abc", "tms": false}
+            );
+        
+    
+            tile_layer_b553b55430b562ced58a893260d8572c.addTo(map_18c771483fd0880d8a84c88af73daa4a);
+        
+    
+            var tile_layer_020bab0336def65270095fe2413fe8f0 = L.tileLayer(
+                "https://{s}.basemaps.cartocdn.com/light_only_labels/{z}/{x}/{y}.png",
+                {"attribution": "\u00a9 CartoDB", "detectRetina": false, "maxZoom": 18, "minZoom": 0, "noWrap": false, "opacity": 1.0, "subdomains": "abcd", "tms": false}
+            );
+        
+    
+            tile_layer_020bab0336def65270095fe2413fe8f0.addTo(map_18c771483fd0880d8a84c88af73daa4a);
+        
+    
+            var tile_layer_102165be7a10d9703d4fec7a9a30c414 = L.tileLayer(
+                "https://earthengine.googleapis.com/v1/projects/623537961570/maps/69ba37786189ab75e5e0bccd221e1a6a-1b8bdec515d2afd797d356d9d698bd60/tiles/{z}/{x}/{y}",
+                {"attribution": "WDPA (WCMC/IUCN)", "detectRetina": false, "maxZoom": 18, "minZoom": 0, "noWrap": false, "opacity": 1.0, "subdomains": "abc", "tms": false}
+            );
+        
+    
+            tile_layer_102165be7a10d9703d4fec7a9a30c414.addTo(map_18c771483fd0880d8a84c88af73daa4a);
+        
+    
+            var tile_layer_7e4f6c2c768150668ee18ac1acd1e65d = L.tileLayer(
+                "https://earthengine.googleapis.com/v1/projects/623537961570/maps/999146a2144a86ea24a5fa9e66e2275f-7a2a296e4cdc7ae7eef395ce8ead4e54/tiles/{z}/{x}/{y}",
+                {"attribution": "GAUL nivel 1 (FAO)", "detectRetina": false, "maxZoom": 18, "minZoom": 0, "noWrap": false, "opacity": 1.0, "subdomains": "abc", "tms": false}
+            );
+        
+    
+            tile_layer_7e4f6c2c768150668ee18ac1acd1e65d.addTo(map_18c771483fd0880d8a84c88af73daa4a);
+        
+    
+            var tile_layer_7629c8efee793327fa3be9223bbd2c83 = L.tileLayer(
+                "https://earthengine.googleapis.com/v1/projects/623537961570/maps/7cff3e43e320d7d9c9cf5af2efca35ef-6cc4ade9d03a88aa3e0f7f15ce2f8a45/tiles/{z}/{x}/{y}",
+                {"attribution": "GAUL nivel 2 (FAO)", "detectRetina": false, "maxZoom": 18, "minZoom": 0, "noWrap": false, "opacity": 1.0, "subdomains": "abc", "tms": false}
+            );
+        
+    
+            tile_layer_7629c8efee793327fa3be9223bbd2c83.addTo(map_18c771483fd0880d8a84c88af73daa4a);
+        
+    
+            var feature_group_1f5b2b78ac301ea5b62a1d80abdd2779 = L.featureGroup(
+                {}
+            );
+        
+    
+        function geo_json_793dc39b336d23026eab025b0a5f14dc_styler(feature) {
+            switch(feature.id) {
+                default:
+                    return {"color": "#e41a1c", "fill": false, "weight": 3};
+            }
+        }
+
+        function geo_json_793dc39b336d23026eab025b0a5f14dc_onEachFeature(feature, layer) {
+            layer.on({
+            });
+        };
+        var geo_json_793dc39b336d23026eab025b0a5f14dc = L.geoJson(null, {
+                onEachFeature: geo_json_793dc39b336d23026eab025b0a5f14dc_onEachFeature,
+            
+                style: geo_json_793dc39b336d23026eab025b0a5f14dc_styler,
+        });
+
+        function geo_json_793dc39b336d23026eab025b0a5f14dc_add (data) {
+            geo_json_793dc39b336d23026eab025b0a5f14dc
+                .addData(data);
+        }
+            geo_json_793dc39b336d23026eab025b0a5f14dc_add({"bbox": [-63.33541, -29.93634, -61.11394, -25.08179], "features": [{"bbox": [-61.15033, -27.33952, -61.11394, -27.31222], "geometry": {"coordinates": [[[-61.15033, -27.31604], [-61.14733, -27.31222], [-61.13874, -27.31787], [-61.13583, -27.31421], [-61.12793, -27.31947], [-61.12184, -27.31238], [-61.11394, -27.31794], [-61.13256, -27.33952], [-61.14038, -27.33426], [-61.13437, -27.32686], [-61.15033, -27.31604]]], "type": "Polygon"}, "id": "0", "properties": {"distancia_min_km": 147.333, "establecimiento": "500675", "interseca_wdpa": false, "km2_protegidos_en_poligono": 0.0, "wdpa_mas_cercana": "Chaco"}, "type": "Feature"}, {"bbox": [-61.15441, -27.35378, -61.12454, -27.32747], "geometry": {"coordinates": [[[-61.14831, -27.34013], [-61.15441, -27.34745], [-61.14488, -27.35378], [-61.13904, -27.34692], [-61.13063, -27.35241], [-61.12454, -27.34509], [-61.13218, -27.34005], [-61.12591, -27.33258], [-61.13329, -27.32747], [-61.13965, -27.33434], [-61.13286, -27.33983], [-61.1393, -27.34615], [-61.14831, -27.34013]]], "type": "Polygon"}, "id": "1", "properties": {"distancia_min_km": 148.077, "establecimiento": "956798", "interseca_wdpa": false, "km2_protegidos_en_poligono": 0.0, "wdpa_mas_cercana": "Isleta Linda"}, "type": "Feature"}, {"bbox": [-62.58868, -25.10519, -62.56336, -25.08179], "geometry": {"coordinates": [[[-62.56431, -25.08179], [-62.58817, -25.08226], [-62.58868, -25.10511], [-62.56336, -25.10519], [-62.56431, -25.08179]]], "type": "Polygon"}, "id": "2", "properties": {"distancia_min_km": 68.889, "establecimiento": "427270", "interseca_wdpa": false, "km2_protegidos_en_poligono": 0.0, "wdpa_mas_cercana": "Copo"}, "type": "Feature"}, {"bbox": [-61.13389, -27.33233, -61.11993, -27.32002], "geometry": {"coordinates": [[[-61.12608, -27.33233], [-61.122, -27.32753], [-61.11993, -27.32509], [-61.12335, -27.32288], [-61.12779, -27.32002], [-61.13389, -27.32669], [-61.12608, -27.33233]]], "type": "Polygon"}, "id": "3", "properties": {"distancia_min_km": 148.145, "establecimiento": "901000", "interseca_wdpa": false, "km2_protegidos_en_poligono": 0.0, "wdpa_mas_cercana": "Chaco"}, "type": "Feature"}, {"bbox": [-61.14033, -27.33899, -61.12643, -27.32709], "geometry": {"coordinates": [[[-61.13244, -27.33899], [-61.12643, -27.33197], [-61.13389, -27.32709], [-61.14033, -27.33411], [-61.13244, -27.33899]]], "type": "Polygon"}, "id": "4", "properties": {"distancia_min_km": 148.998, "establecimiento": "878847", "interseca_wdpa": false, "km2_protegidos_en_poligono": 0.0, "wdpa_mas_cercana": "Chaco"}, "type": "Feature"}, {"bbox": [-61.36753, -27.0657, -61.35821, -27.05637], "geometry": {"coordinates": [[[-61.36418, -27.0657], [-61.36753, -27.06356], [-61.3613, -27.05637], [-61.35821, -27.05882], [-61.36418, -27.0657]]], "type": "Polygon"}, "id": "5", "properties": {"distancia_min_km": 113.721, "establecimiento": "642308", "interseca_wdpa": false, "km2_protegidos_en_poligono": 0.0, "wdpa_mas_cercana": "Copo"}, "type": "Feature"}, {"bbox": [-63.33541, -29.93634, -63.10255, -29.85494], "geometry": {"coordinates": [[[-63.32923, -29.87995], [-63.33163, -29.86402], [-63.33541, -29.85524], [-63.26726, -29.85538], [-63.25911, -29.85494], [-63.25636, -29.85643], [-63.24675, -29.85702], [-63.22786, -29.85643], [-63.2258, -29.88292], [-63.18666, -29.88292], [-63.18254, -29.89096], [-63.12727, -29.88471], [-63.13002, -29.90138], [-63.10255, -29.90167], [-63.10392, -29.93441], [-63.22898, -29.9356], [-63.32665, -29.93634], [-63.32923, -29.87995]]], "type": "Polygon"}, "id": "6", "properties": {"distancia_min_km": 0.0, "establecimiento": "290102", "interseca_wdpa": true, "km2_protegidos_en_poligono": 148.0718, "wdpa_mas_cercana": "Ba\u00f1ados del R\u00edo Dulce y Laguna de Mar Chiquita"}, "type": "Feature"}, {"bbox": [-63.28686, -29.91169, -63.18935, -29.85275], "geometry": {"coordinates": [[[-63.2848, -29.89384], [-63.19279, -29.91169], [-63.18935, -29.85275], [-63.28686, -29.85573], [-63.2848, -29.89384]]], "type": "Polygon"}, "id": "7", "properties": {"distancia_min_km": 0.0, "establecimiento": "607244", "interseca_wdpa": true, "km2_protegidos_en_poligono": 49.352, "wdpa_mas_cercana": "Ba\u00f1ados del R\u00edo Dulce y Laguna de Mar Chiquita"}, "type": "Feature"}], "type": "FeatureCollection"});
+
+        
+    
+    geo_json_793dc39b336d23026eab025b0a5f14dc.bindTooltip(
+    function(layer){
+    let div = L.DomUtil.create('div');
+    
+    let handleObject = feature=>typeof(feature)=='object' ? JSON.stringify(feature) : feature;
+    let fields = ["establecimiento"];
+    let aliases = ["ID: "];
+    let table = '<table>' +
+        String(
+        fields.map(
+        (v,i)=>
+        `<tr>
+            <th>${aliases[i]}</th>
+            
+            <td>${handleObject(layer.feature.properties[v])}</td>
+        </tr>`).join(''))
+    +'</table>';
+    div.innerHTML=table;
+    
+    return div
+    }
+    ,{"className": "foliumtooltip", "sticky": true});
+                     
+    
+            geo_json_793dc39b336d23026eab025b0a5f14dc.addTo(feature_group_1f5b2b78ac301ea5b62a1d80abdd2779);
+        
+    
+            var circle_marker_a23408f3b505037b2d8c13fbe8227355 = L.circleMarker(
+                [-27.323165, -61.129134306817775],
+                {"bubblingMouseEvents": true, "color": "#e41a1c", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#e41a1c", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 4, "stroke": true, "weight": 3}
+            ).addTo(feature_group_1f5b2b78ac301ea5b62a1d80abdd2779);
+        
+    
+        var popup_756b0ecf8d3c11287f7f19b9113ce00d = L.popup({"maxWidth": 350});
+
+        
+            
+                var html_791f2239737d1fb0548c592d7b62f554 = $(`<div id="html_791f2239737d1fb0548c592d7b62f554" style="width: 100.0%; height: 100.0%;"><b>Establecimiento:</b> 500675<br><b>Interseca WDPA:</b> False<br><b>Área WDPA dentro:</b> 0.0 km²<br><b>WDPA más cercana:</b> Chaco<br><b>Distancia mínima:</b> 147.333 km</div>`)[0];
+                popup_756b0ecf8d3c11287f7f19b9113ce00d.setContent(html_791f2239737d1fb0548c592d7b62f554);
+            
+        
+
+        circle_marker_a23408f3b505037b2d8c13fbe8227355.bindPopup(popup_756b0ecf8d3c11287f7f19b9113ce00d)
+        ;
+
+        
+    
+    
+            circle_marker_a23408f3b505037b2d8c13fbe8227355.bindTooltip(
+                `<div>
+                     Establecimiento 500675
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_marker_885420fdb4c68d3f73ebaa52129af084 = L.circleMarker(
+                [-27.34261, -61.131996074944745],
+                {"bubblingMouseEvents": true, "color": "#e41a1c", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#e41a1c", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 4, "stroke": true, "weight": 3}
+            ).addTo(feature_group_1f5b2b78ac301ea5b62a1d80abdd2779);
+        
+    
+        var popup_16747eb549c17c3ae72b0119822422c6 = L.popup({"maxWidth": 350});
+
+        
+            
+                var html_a788da5f71e5296807682d9cbc1e50c2 = $(`<div id="html_a788da5f71e5296807682d9cbc1e50c2" style="width: 100.0%; height: 100.0%;"><b>Establecimiento:</b> 956798<br><b>Interseca WDPA:</b> False<br><b>Área WDPA dentro:</b> 0.0 km²<br><b>WDPA más cercana:</b> Isleta Linda<br><b>Distancia mínima:</b> 148.077 km</div>`)[0];
+                popup_16747eb549c17c3ae72b0119822422c6.setContent(html_a788da5f71e5296807682d9cbc1e50c2);
+            
+        
+
+        circle_marker_885420fdb4c68d3f73ebaa52129af084.bindPopup(popup_16747eb549c17c3ae72b0119822422c6)
+        ;
+
+        
+    
+    
+            circle_marker_885420fdb4c68d3f73ebaa52129af084.bindTooltip(
+                `<div>
+                     Establecimiento 956798
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_marker_2a80d441527074f45fc8166c7cb2ba26 = L.circleMarker(
+                [-25.093685, -62.57612604166667],
+                {"bubblingMouseEvents": true, "color": "#e41a1c", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#e41a1c", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 4, "stroke": true, "weight": 3}
+            ).addTo(feature_group_1f5b2b78ac301ea5b62a1d80abdd2779);
+        
+    
+        var popup_9ed9cc60c32d31b395b8e388a7ef7351 = L.popup({"maxWidth": 350});
+
+        
+            
+                var html_d749a739d9caaa73ca1099734f4acf4b = $(`<div id="html_d749a739d9caaa73ca1099734f4acf4b" style="width: 100.0%; height: 100.0%;"><b>Establecimiento:</b> 427270<br><b>Interseca WDPA:</b> False<br><b>Área WDPA dentro:</b> 0.0 km²<br><b>WDPA más cercana:</b> Copo<br><b>Distancia mínima:</b> 68.889 km</div>`)[0];
+                popup_9ed9cc60c32d31b395b8e388a7ef7351.setContent(html_d749a739d9caaa73ca1099734f4acf4b);
+            
+        
+
+        circle_marker_2a80d441527074f45fc8166c7cb2ba26.bindPopup(popup_9ed9cc60c32d31b395b8e388a7ef7351)
+        ;
+
+        
+    
+    
+            circle_marker_2a80d441527074f45fc8166c7cb2ba26.bindTooltip(
+                `<div>
+                     Establecimiento 427270
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_marker_c66dc4d0c0b19e351135e96f6001b5c4 = L.circleMarker(
+                [-27.32589, -61.12688352717085],
+                {"bubblingMouseEvents": true, "color": "#e41a1c", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#e41a1c", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 4, "stroke": true, "weight": 3}
+            ).addTo(feature_group_1f5b2b78ac301ea5b62a1d80abdd2779);
+        
+    
+        var popup_3209c71de40ff0e196102be6351795f9 = L.popup({"maxWidth": 350});
+
+        
+            
+                var html_d2e3f49f096af757d865a434a5cd7593 = $(`<div id="html_d2e3f49f096af757d865a434a5cd7593" style="width: 100.0%; height: 100.0%;"><b>Establecimiento:</b> 901000<br><b>Interseca WDPA:</b> False<br><b>Área WDPA dentro:</b> 0.0 km²<br><b>WDPA más cercana:</b> Chaco<br><b>Distancia mínima:</b> 148.145 km</div>`)[0];
+                popup_3209c71de40ff0e196102be6351795f9.setContent(html_d2e3f49f096af757d865a434a5cd7593);
+            
+        
+
+        circle_marker_c66dc4d0c0b19e351135e96f6001b5c4.bindPopup(popup_3209c71de40ff0e196102be6351795f9)
+        ;
+
+        
+    
+    
+            circle_marker_c66dc4d0c0b19e351135e96f6001b5c4.bindTooltip(
+                `<div>
+                     Establecimiento 901000
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_marker_b125f9148b6f949d03de604966c51809 = L.circleMarker(
+                [-27.333039999999997, -61.13334722934473],
+                {"bubblingMouseEvents": true, "color": "#e41a1c", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#e41a1c", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 4, "stroke": true, "weight": 3}
+            ).addTo(feature_group_1f5b2b78ac301ea5b62a1d80abdd2779);
+        
+    
+        var popup_c543dfe8756965cf6eaee6532c355c98 = L.popup({"maxWidth": 350});
+
+        
+            
+                var html_9e00820ea8b8762b21b25a060599f1fa = $(`<div id="html_9e00820ea8b8762b21b25a060599f1fa" style="width: 100.0%; height: 100.0%;"><b>Establecimiento:</b> 878847<br><b>Interseca WDPA:</b> False<br><b>Área WDPA dentro:</b> 0.0 km²<br><b>WDPA más cercana:</b> Chaco<br><b>Distancia mínima:</b> 148.998 km</div>`)[0];
+                popup_c543dfe8756965cf6eaee6532c355c98.setContent(html_9e00820ea8b8762b21b25a060599f1fa);
+            
+        
+
+        circle_marker_b125f9148b6f949d03de604966c51809.bindPopup(popup_c543dfe8756965cf6eaee6532c355c98)
+        ;
+
+        
+    
+    
+            circle_marker_b125f9148b6f949d03de604966c51809.bindTooltip(
+                `<div>
+                     Establecimiento 878847
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_marker_020e6ef63527093c4cc9be53925c313e = L.circleMarker(
+                [-27.06119, -61.362871482831046],
+                {"bubblingMouseEvents": true, "color": "#e41a1c", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#e41a1c", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 4, "stroke": true, "weight": 3}
+            ).addTo(feature_group_1f5b2b78ac301ea5b62a1d80abdd2779);
+        
+    
+        var popup_71ee73efebecdb535c8139c0f32ca6c0 = L.popup({"maxWidth": 350});
+
+        
+            
+                var html_e22d8e31949dfd9475e0c924f1544a45 = $(`<div id="html_e22d8e31949dfd9475e0c924f1544a45" style="width: 100.0%; height: 100.0%;"><b>Establecimiento:</b> 642308<br><b>Interseca WDPA:</b> False<br><b>Área WDPA dentro:</b> 0.0 km²<br><b>WDPA más cercana:</b> Copo<br><b>Distancia mínima:</b> 113.721 km</div>`)[0];
+                popup_71ee73efebecdb535c8139c0f32ca6c0.setContent(html_e22d8e31949dfd9475e0c924f1544a45);
+            
+        
+
+        circle_marker_020e6ef63527093c4cc9be53925c313e.bindPopup(popup_71ee73efebecdb535c8139c0f32ca6c0)
+        ;
+
+        
+    
+    
+            circle_marker_020e6ef63527093c4cc9be53925c313e.bindTooltip(
+                `<div>
+                     Establecimiento 642308
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_marker_95238e19e26801d000b525564b3754e1 = L.circleMarker(
+                [-29.896169999999998, -63.22882420579619],
+                {"bubblingMouseEvents": true, "color": "#e41a1c", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#e41a1c", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 4, "stroke": true, "weight": 3}
+            ).addTo(feature_group_1f5b2b78ac301ea5b62a1d80abdd2779);
+        
+    
+        var popup_d2eaa0d5906c8c2591e91c451efaa02c = L.popup({"maxWidth": 350});
+
+        
+            
+                var html_15311ec2898386514c9e751a33b4135d = $(`<div id="html_15311ec2898386514c9e751a33b4135d" style="width: 100.0%; height: 100.0%;"><b>Establecimiento:</b> 290102<br><b>Interseca WDPA:</b> True<br><b>Área WDPA dentro:</b> 148.0718 km²<br><b>WDPA más cercana:</b> Bañados del Río Dulce y Laguna de Mar Chiquita<br><b>Distancia mínima:</b> 0.0 km</div>`)[0];
+                popup_d2eaa0d5906c8c2591e91c451efaa02c.setContent(html_15311ec2898386514c9e751a33b4135d);
+            
+        
+
+        circle_marker_95238e19e26801d000b525564b3754e1.bindPopup(popup_d2eaa0d5906c8c2591e91c451efaa02c)
+        ;
+
+        
+    
+    
+            circle_marker_95238e19e26801d000b525564b3754e1.bindTooltip(
+                `<div>
+                     Establecimiento 290102
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_marker_6668b4442ffaf7e7c375e066c77bb566 = L.circleMarker(
+                [-29.874785000000003, -63.238233030200206],
+                {"bubblingMouseEvents": true, "color": "#e41a1c", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#e41a1c", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 4, "stroke": true, "weight": 3}
+            ).addTo(feature_group_1f5b2b78ac301ea5b62a1d80abdd2779);
+        
+    
+        var popup_433a9bad3ab6a2dce8750c5f9fd4336c = L.popup({"maxWidth": 350});
+
+        
+            
+                var html_1c1d4e63f93f2c3ef72743608c96b636 = $(`<div id="html_1c1d4e63f93f2c3ef72743608c96b636" style="width: 100.0%; height: 100.0%;"><b>Establecimiento:</b> 607244<br><b>Interseca WDPA:</b> True<br><b>Área WDPA dentro:</b> 49.352 km²<br><b>WDPA más cercana:</b> Bañados del Río Dulce y Laguna de Mar Chiquita<br><b>Distancia mínima:</b> 0.0 km</div>`)[0];
+                popup_433a9bad3ab6a2dce8750c5f9fd4336c.setContent(html_1c1d4e63f93f2c3ef72743608c96b636);
+            
+        
+
+        circle_marker_6668b4442ffaf7e7c375e066c77bb566.bindPopup(popup_433a9bad3ab6a2dce8750c5f9fd4336c)
+        ;
+
+        
+    
+    
+            circle_marker_6668b4442ffaf7e7c375e066c77bb566.bindTooltip(
+                `<div>
+                     Establecimiento 607244
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            feature_group_1f5b2b78ac301ea5b62a1d80abdd2779.addTo(map_18c771483fd0880d8a84c88af73daa4a);
+        
+    
+            var measure_control_031f5f0c4fab42366f0f7bbaf0ac02d6 = new L.Control.Measure(
+                {"position": "topleft", "primaryAreaUnit": "sqkilometers", "primaryLengthUnit": "kilometers", "secondaryAreaUnit": "acres", "secondaryLengthUnit": "miles"});
+            map_18c771483fd0880d8a84c88af73daa4a.addControl(measure_control_031f5f0c4fab42366f0f7bbaf0ac02d6);
+
+            // Workaround for using this plugin with Leaflet>=1.8.0
+            // https://github.com/ljagis/leaflet-measure/issues/171
+            L.Control.Measure.include({
+                _setCaptureMarkerIcon: function () {
+                    // disable autopan
+                    this._captureMarker.options.autoPanOnFocus = false;
+                    // default function
+                    this._captureMarker.setIcon(
+                        L.divIcon({
+                            iconSize: this._map.getSize().multiplyBy(2)
+                        })
+                    );
+                },
+            });
+
+        
+    
+            var mouse_position_4a22bb87a316f58aecff83d80c71c3bf = new L.Control.MousePosition(
+                {"emptyString": "Unavailable", "lngFirst": false, "numDigits": 5, "position": "bottomleft", "prefix": "Lat/Lon", "separator": " | "}
+            );
+            mouse_position_4a22bb87a316f58aecff83d80c71c3bf.options["latFormatter"] =
+                undefined;
+            mouse_position_4a22bb87a316f58aecff83d80c71c3bf.options["lngFormatter"] =
+                undefined;
+            map_18c771483fd0880d8a84c88af73daa4a.addControl(mouse_position_4a22bb87a316f58aecff83d80c71c3bf);
+        
+    
+            var tile_layer_62c150fa880e22c9e4a9b78d9c67d692 = L.tileLayer(
+                "https://tile.openstreetmap.org/{z}/{x}/{y}.png",
+                {"attribution": "\u0026copy; \u003ca href=\"https://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors", "detectRetina": false, "maxNativeZoom": 19, "maxZoom": 19, "minZoom": 0, "noWrap": false, "opacity": 1, "subdomains": "abc", "tms": false}
+            );
+            var mini_map_de5a6df94e9d93e1878e128e5709212c = new L.Control.MiniMap(
+                tile_layer_62c150fa880e22c9e4a9b78d9c67d692,
+                {"autoToggleDisplay": false, "centerFixed": false, "collapsedHeight": 25, "collapsedWidth": 25, "height": 150, "minimized": false, "position": "bottomright", "toggleDisplay": true, "width": 150, "zoomAnimation": false, "zoomLevelOffset": -5}
+            );
+            map_18c771483fd0880d8a84c88af73daa4a.addControl(mini_map_de5a6df94e9d93e1878e128e5709212c);
+        
+    
+            map_18c771483fd0880d8a84c88af73daa4a.fitBounds(
+                [[-29.93634, -63.33541], [-25.08179, -61.11394]],
+                {}
+            );
+        
+    
+            var layer_control_391b89da695f501df8adeb59d7ea1965_layers = {
+                base_layers : {
+                    "OpenStreetMap" : tile_layer_994eceeba15268f476df474a22e519c7,
+                    "Esri World Imagery" : tile_layer_1cee61e48640caebe012318c58155e88,
+                    "Carto Positron (claro)" : tile_layer_bbb22b8b0e556bad5149bfbda2764ef4,
+                    "OpenTopoMap" : tile_layer_b553b55430b562ced58a893260d8572c,
+                },
+                overlays :  {
+                    "Etiquetas (localidades)" : tile_layer_020bab0336def65270095fe2413fe8f0,
+                    "\u00c1reas protegidas (WDPA)" : tile_layer_102165be7a10d9703d4fec7a9a30c414,
+                    "Provincias" : tile_layer_7e4f6c2c768150668ee18ac1acd1e65d,
+                    "Departamentos" : tile_layer_7629c8efee793327fa3be9223bbd2c83,
+                    "Establecimientos" : feature_group_1f5b2b78ac301ea5b62a1d80abdd2779,
+                },
+            };
+            let layer_control_391b89da695f501df8adeb59d7ea1965 = L.control.layers(
+                layer_control_391b89da695f501df8adeb59d7ea1965_layers.base_layers,
+                layer_control_391b89da695f501df8adeb59d7ea1965_layers.overlays,
+                {"autoZIndex": true, "collapsed": false, "position": "topright"}
+            ).addTo(map_18c771483fd0880d8a84c88af73daa4a);
+
+        
+</script>
+</html>

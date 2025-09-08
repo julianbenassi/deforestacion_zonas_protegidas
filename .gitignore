@@ -1,4 +1,11 @@
-/*
 !.gitignore
-!README.md
-!sistema_alertas_climaticas.ipynb
+!deforestacion_areas_protegidas.ipynb
+!bosque_mapbiomas_por_establecimiento.csv
+!perdida_hansen_por_establecimiento.csv
+!wdpa_intersecciones.csv
+!map_contexto_todos.html
+!lote_02/
+!lote_02/lote_02_hansen_loss_por_establecimiento.csv
+!lote_02/lote_02_bosque_mapbiomas_por_establecimiento.csv
+!lote_02/lote_02_wdpa_intersecciones.csv
+!lote_02/lote_02_map_contexto.html

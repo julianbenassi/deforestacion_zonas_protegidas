@@ -1,0 +1,937 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    
+        <script>
+            L_NO_TOUCH = false;
+            L_DISABLE_3D = false;
+        </script>
+    
+    <style>html, body {width: 100%;height: 100%;margin: 0;padding: 0;}</style>
+    <style>#map {position:absolute;top:0;bottom:0;right:0;left:0;}</style>
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+    
+            <meta name="viewport" content="width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+            <style>
+                #map_3f5113e286b53cf597b223162c92b6fd {
+                    position: relative;
+                    width: 100.0%;
+                    height: 100.0%;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+                .leaflet-container { font-size: 1rem; }
+            </style>
+        
+    
+                    <style>
+                        .foliumtooltip {
+                            
+                        }
+                       .foliumtooltip table{
+                            margin: auto;
+                        }
+                        .foliumtooltip tr{
+                            text-align: left;
+                        }
+                        .foliumtooltip th{
+                            padding: 2px; padding-right: 8px;
+                        }
+                    </style>
+            
+    <script src="https://cdn.jsdelivr.net/gh/ljagis/leaflet-measure@2.1.7/dist/leaflet-measure.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/ljagis/leaflet-measure@2.1.7/dist/leaflet-measure.min.css"/>
+    <script src="https://cdn.jsdelivr.net/gh/ardhi/Leaflet.MousePosition/src/L.Control.MousePosition.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/ardhi/Leaflet.MousePosition/src/L.Control.MousePosition.min.css"/>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet-minimap/3.6.1/Control.MiniMap.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet-minimap/3.6.1/Control.MiniMap.css"/>
+</head>
+<body>
+    
+    
+            <div class="folium-map" id="map_3f5113e286b53cf597b223162c92b6fd" ></div>
+        
+</body>
+<script>
+    
+    
+            var map_3f5113e286b53cf597b223162c92b6fd = L.map(
+                "map_3f5113e286b53cf597b223162c92b6fd",
+                {
+                    center: [-26.52461949060952, -61.99997870993311],
+                    crs: L.CRS.EPSG3857,
+                    zoom: 7,
+                    zoomControl: true,
+                    preferCanvas: false,
+                }
+            );
+            L.control.scale().addTo(map_3f5113e286b53cf597b223162c92b6fd);
+
+            
+
+        
+    
+            var tile_layer_6d997771c4aafc9121e949d6f65e4567 = L.tileLayer(
+                "https://tile.openstreetmap.org/{z}/{x}/{y}.png",
+                {"attribution": "\u0026copy; \u003ca href=\"https://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors", "detectRetina": false, "maxNativeZoom": 19, "maxZoom": 19, "minZoom": 0, "noWrap": false, "opacity": 1, "subdomains": "abc", "tms": false}
+            );
+        
+    
+            tile_layer_6d997771c4aafc9121e949d6f65e4567.addTo(map_3f5113e286b53cf597b223162c92b6fd);
+        
+    
+            var tile_layer_3d772ad1cbda5fd0d0d667b2ffe28106 = L.tileLayer(
+                "https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}",
+                {"attribution": "Esri", "detectRetina": false, "maxZoom": 18, "minZoom": 0, "noWrap": false, "opacity": 1, "subdomains": "abc", "tms": false}
+            );
+        
+    
+            tile_layer_3d772ad1cbda5fd0d0d667b2ffe28106.addTo(map_3f5113e286b53cf597b223162c92b6fd);
+        
+    
+            var tile_layer_dfed4d7f0dd2232a54549940b3c5a76c = L.tileLayer(
+                "https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png",
+                {"attribution": "\u0026copy; \u003ca href=\"https://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors \u0026copy; \u003ca href=\"https://carto.com/attributions\"\u003eCARTO\u003c/a\u003e", "detectRetina": false, "maxNativeZoom": 20, "maxZoom": 20, "minZoom": 0, "noWrap": false, "opacity": 1, "subdomains": "abcd", "tms": false}
+            );
+        
+    
+            tile_layer_dfed4d7f0dd2232a54549940b3c5a76c.addTo(map_3f5113e286b53cf597b223162c92b6fd);
+        
+    
+            var tile_layer_6208fa58862cd2a8c2093a51c060cc98 = L.tileLayer(
+                "https://{s}.tile.opentopomap.org/{z}/{x}/{y}.png",
+                {"attribution": "\u00a9 OpenTopoMap (CC-BY-SA), \u00a9 OpenStreetMap contributors", "detectRetina": false, "maxZoom": 18, "minZoom": 0, "noWrap": false, "opacity": 1, "subdomains": "abc", "tms": false}
+            );
+        
+    
+            tile_layer_6208fa58862cd2a8c2093a51c060cc98.addTo(map_3f5113e286b53cf597b223162c92b6fd);
+        
+    
+            var tile_layer_a4a23fcc3b266c78aaa2e0efc5a7c640 = L.tileLayer(
+                "https://{s}.basemaps.cartocdn.com/light_only_labels/{z}/{x}/{y}.png",
+                {"attribution": "\u00a9 CartoDB", "detectRetina": false, "maxZoom": 18, "minZoom": 0, "noWrap": false, "opacity": 1.0, "subdomains": "abcd", "tms": false}
+            );
+        
+    
+            tile_layer_a4a23fcc3b266c78aaa2e0efc5a7c640.addTo(map_3f5113e286b53cf597b223162c92b6fd);
+        
+    
+            var tile_layer_1c05665420a9d61497ffde28e1db58fa = L.tileLayer(
+                "https://earthengine.googleapis.com/v1/projects/623537961570/maps/eb624ef6d7ab780387703835e004b6d4-10243c65740d42e887762261fea4cda8/tiles/{z}/{x}/{y}",
+                {"attribution": "WDPA (WCMC/IUCN)", "detectRetina": false, "maxZoom": 18, "minZoom": 0, "noWrap": false, "opacity": 1.0, "subdomains": "abc", "tms": false}
+            );
+        
+    
+            tile_layer_1c05665420a9d61497ffde28e1db58fa.addTo(map_3f5113e286b53cf597b223162c92b6fd);
+        
+    
+            var tile_layer_3e6c79d096a5545ae5dd299502de13c4 = L.tileLayer(
+                "https://earthengine.googleapis.com/v1/projects/623537961570/maps/c17688876b190833aee2bab397c5ffd3-ffc97bc3e47a111768e7fc88a2ec1515/tiles/{z}/{x}/{y}",
+                {"attribution": "GAUL nivel 1 (FAO)", "detectRetina": false, "maxZoom": 18, "minZoom": 0, "noWrap": false, "opacity": 1.0, "subdomains": "abc", "tms": false}
+            );
+        
+    
+            tile_layer_3e6c79d096a5545ae5dd299502de13c4.addTo(map_3f5113e286b53cf597b223162c92b6fd);
+        
+    
+            var tile_layer_32c2af66cb926ac3ae352de80606fb52 = L.tileLayer(
+                "https://earthengine.googleapis.com/v1/projects/623537961570/maps/839c04c2f2b5f93c13c8a1205ad491c5-42f2579623992b37fd4bc6a572f9b079/tiles/{z}/{x}/{y}",
+                {"attribution": "GAUL nivel 2 (FAO)", "detectRetina": false, "maxZoom": 18, "minZoom": 0, "noWrap": false, "opacity": 1.0, "subdomains": "abc", "tms": false}
+            );
+        
+    
+            tile_layer_32c2af66cb926ac3ae352de80606fb52.addTo(map_3f5113e286b53cf597b223162c92b6fd);
+        
+    
+            var tile_layer_0a16c9bea90394d0b9764492e7cf5e3d = L.tileLayer(
+                "https://earthengine.googleapis.com/v1/projects/623537961570/maps/82566443d70893e10b369d6844326584-1071d4269e0e37ca9dfc1289d200507f/tiles/{z}/{x}/{y}",
+                {"attribution": "Hansen GFC v1.11", "detectRetina": false, "maxZoom": 18, "minZoom": 0, "noWrap": false, "opacity": 0.7, "subdomains": "abc", "tms": false}
+            );
+        
+    
+            tile_layer_0a16c9bea90394d0b9764492e7cf5e3d.addTo(map_3f5113e286b53cf597b223162c92b6fd);
+        
+    
+            var feature_group_5da54aeccb9e36752cc42f82a237058d = L.featureGroup(
+                {}
+            );
+        
+    
+        function geo_json_7409b993d4c4760a1dca02adce1350ab_styler(feature) {
+            switch(feature.id) {
+                default:
+                    return {"color": "#e41a1c", "fill": false, "weight": 3};
+            }
+        }
+
+        function geo_json_7409b993d4c4760a1dca02adce1350ab_onEachFeature(feature, layer) {
+            layer.on({
+            });
+        };
+        var geo_json_7409b993d4c4760a1dca02adce1350ab = L.geoJson(null, {
+                onEachFeature: geo_json_7409b993d4c4760a1dca02adce1350ab_onEachFeature,
+            
+                style: geo_json_7409b993d4c4760a1dca02adce1350ab_styler,
+        });
+
+        function geo_json_7409b993d4c4760a1dca02adce1350ab_add (data) {
+            geo_json_7409b993d4c4760a1dca02adce1350ab
+                .addData(data);
+        }
+            geo_json_7409b993d4c4760a1dca02adce1350ab_add({"bbox": [-62.61359, -26.78091, -61.71192169189453, -26.13517], "features": [{"bbox": [-62.05002, -26.55439, -62.01367, -26.5384], "geometry": {"coordinates": [[[-62.01367, -26.55439], [-62.05002, -26.55421], [-62.05002, -26.54285], [-62.04659, -26.54285], [-62.04668, -26.53863], [-62.01372, -26.5384], [-62.01367, -26.55439]]], "type": "Polygon"}, "id": "0", "properties": {"distancia_min_km": 40.671, "establecimiento": "828023", "ha_perdida_total": 581.6251218648878, "interseca_wdpa": false, "km2_protegidos_en_poligono": 0.0, "wdpa_mas_cercana": "Copo"}, "type": "Feature"}, {"bbox": [-62.06745, -26.5622, -62.05457, -26.53352], "geometry": {"coordinates": [[[-62.06719, -26.56189], [-62.05457, -26.5622], [-62.05482, -26.53352], [-62.06745, -26.53364], [-62.06719, -26.56189]]], "type": "Polygon"}, "id": "1", "properties": {"distancia_min_km": 41.004, "establecimiento": "846358", "ha_perdida_total": 373.41117570147355, "interseca_wdpa": false, "km2_protegidos_en_poligono": 0.0, "wdpa_mas_cercana": "Copo"}, "type": "Feature"}, {"bbox": [-62.041168212890625, -26.645003827815252, -62.013702392578125, -26.61339260150327], "geometry": {"coordinates": [[[-62.041168212890625, -26.61339260150327], [-62.013702392578125, -26.61369954864527], [-62.013702392578125, -26.645003827815252], [-62.04082489013672, -26.645003827815252], [-62.041168212890625, -26.61339260150327]]], "type": "Polygon"}, "id": "2", "properties": {"distancia_min_km": 48.924, "establecimiento": "629461", "ha_perdida_total": 848.0250096024896, "interseca_wdpa": false, "km2_protegidos_en_poligono": 0.0, "wdpa_mas_cercana": "Copo"}, "type": "Feature"}, {"bbox": [-61.98963, -26.72637, -61.94877, -26.69923], "geometry": {"coordinates": [[[-61.98963, -26.69923], [-61.96422, -26.69961], [-61.96431, -26.70644], [-61.94877, -26.70659], [-61.94894, -26.70943], [-61.96414, -26.70927], [-61.96431, -26.72606], [-61.98946, -26.72637], [-61.98963, -26.69923]]], "type": "Polygon"}, "id": "3", "properties": {"distancia_min_km": 58.029, "establecimiento": "827998", "ha_perdida_total": 431.90769987773825, "interseca_wdpa": false, "km2_protegidos_en_poligono": 0.0, "wdpa_mas_cercana": "Copo"}, "type": "Feature"}, {"bbox": [-61.96423, -26.72277, -61.94912, -26.71604], "geometry": {"coordinates": [[[-61.96423, -26.71606], [-61.96423, -26.72277], [-61.94912, -26.72275], [-61.94914, -26.71604], [-61.96423, -26.71606]]], "type": "Polygon"}, "id": "4", "properties": {"distancia_min_km": 59.828, "establecimiento": "857625", "ha_perdida_total": 96.14889261926945, "interseca_wdpa": false, "km2_protegidos_en_poligono": 0.0, "wdpa_mas_cercana": "Copo"}, "type": "Feature"}, {"bbox": [-61.94905, -26.71127, -61.93826, -26.69938], "geometry": {"coordinates": [[[-61.94905, -26.70657], [-61.94901, -26.7032], [-61.94351, -26.70314], [-61.9435, -26.69938], [-61.93826, -26.69938], [-61.93857, -26.70866], [-61.93852, -26.7092], [-61.93856, -26.7096], [-61.93858, -26.71127], [-61.94841, -26.71115], [-61.94831, -26.70659], [-61.94905, -26.70657]]], "type": "Polygon"}, "id": "5", "properties": {"distancia_min_km": 57.984, "establecimiento": "885496", "ha_perdida_total": 99.05182191985489, "interseca_wdpa": false, "km2_protegidos_en_poligono": 0.0, "wdpa_mas_cercana": "Copo"}, "type": "Feature"}, {"bbox": [-61.9393, -26.72599, -61.93347, -26.69938], "geometry": {"coordinates": [[[-61.93364, -26.69938], [-61.93347, -26.72599], [-61.93913, -26.72599], [-61.9393, -26.69954], [-61.93364, -26.69938]]], "type": "Polygon"}, "id": "6", "properties": {"distancia_min_km": 58.001, "establecimiento": "885498", "ha_perdida_total": 151.6115758851535, "interseca_wdpa": false, "km2_protegidos_en_poligono": 0.0, "wdpa_mas_cercana": "Copo"}, "type": "Feature"}, {"bbox": [-62.28921890258789, -26.620835837409633, -62.26827621459961, -26.596662736348552], "geometry": {"coordinates": [[[-62.26827621459961, -26.596662736348552], [-62.28921890258789, -26.596662736348552], [-62.28896141052246, -26.620835837409633], [-62.26831912994385, -26.62045217730121], [-62.26827621459961, -26.596662736348552]]], "type": "Polygon"}, "id": "7", "properties": {"distancia_min_km": 55.707, "establecimiento": "457784", "ha_perdida_total": 350.9639316145124, "interseca_wdpa": false, "km2_protegidos_en_poligono": 0.0, "wdpa_mas_cercana": "Copo"}, "type": "Feature"}, {"bbox": [-62.28973388671875, -26.596509240021383, -62.26801872253418, -26.572254234660342], "geometry": {"coordinates": [[[-62.28973388671875, -26.572254234660342], [-62.26819038391113, -26.572254234660342], [-62.26801872253418, -26.59635574348833], [-62.2895622253418, -26.596509240021383], [-62.28973388671875, -26.572254234660342]]], "type": "Polygon"}, "id": "8", "properties": {"distancia_min_km": 53.251, "establecimiento": "457782", "ha_perdida_total": 360.8008260738364, "interseca_wdpa": false, "km2_protegidos_en_poligono": 0.0, "wdpa_mas_cercana": "Copo"}, "type": "Feature"}, {"bbox": [-62.06741, -26.58622, -62.04183, -26.53402], "geometry": {"coordinates": [[[-62.04183, -26.58622], [-62.06646, -26.57632], [-62.06741, -26.5622], [-62.0547, -26.56227], [-62.0547, -26.53402], [-62.04655, -26.53402], [-62.04724, -26.54224], [-62.05007, -26.54224], [-62.05007, -26.55383], [-62.04243, -26.55444], [-62.04183, -26.58622]]], "type": "Polygon"}, "id": "9", "properties": {"distancia_min_km": 40.852, "establecimiento": "657906", "ha_perdida_total": 626.4186950423631, "interseca_wdpa": false, "km2_protegidos_en_poligono": 0.0, "wdpa_mas_cercana": "Copo"}, "type": "Feature"}, {"bbox": [-62.61359, -26.21967, -62.55197, -26.17146], "geometry": {"coordinates": [[[-62.6032, -26.21967], [-62.61197, -26.19397], [-62.61359, -26.17601], [-62.5756, -26.17558], [-62.57575, -26.17177], [-62.55208, -26.17146], [-62.55197, -26.17592], [-62.55213, -26.19449], [-62.57547, -26.19453], [-62.5797, -26.19449], [-62.57899, -26.1995], [-62.6032, -26.21967]]], "type": "Polygon"}, "id": "10", "properties": {"distancia_min_km": 34.625, "establecimiento": "923028", "ha_perdida_total": 906.2864200965048, "interseca_wdpa": false, "km2_protegidos_en_poligono": 0.0, "wdpa_mas_cercana": "Copo"}, "type": "Feature"}, {"bbox": [-61.97681, -26.61523, -61.96394, -26.58791], "geometry": {"coordinates": [[[-61.96402, -26.61523], [-61.97681, -26.61063], [-61.97664, -26.58791], [-61.96394, -26.5883], [-61.96402, -26.61523]]], "type": "Polygon"}, "id": "11", "properties": {"distancia_min_km": 45.701, "establecimiento": "937514", "ha_perdida_total": 51.17793815429709, "interseca_wdpa": false, "km2_protegidos_en_poligono": 0.0, "wdpa_mas_cercana": "Copo"}, "type": "Feature"}, {"bbox": [-61.98412, -26.67212, -61.96394, -26.63253], "geometry": {"coordinates": [[[-61.97723, -26.63265], [-61.96394, -26.63253], [-61.96405, -26.67212], [-61.98412, -26.67199], [-61.98409, -26.64546], [-61.97688, -26.64531], [-61.97723, -26.63265]]], "type": "Polygon"}, "id": "12", "properties": {"distancia_min_km": 50.599, "establecimiento": "958542", "ha_perdida_total": 590.8262131131744, "interseca_wdpa": false, "km2_protegidos_en_poligono": 0.0, "wdpa_mas_cercana": "Copo"}, "type": "Feature"}, {"bbox": [-61.97834, -26.63273, -61.9265, -26.55414], "geometry": {"coordinates": [[[-61.97834, -26.63273], [-61.92684, -26.63273], [-61.9265, -26.55536], [-61.97662, -26.55414], [-61.97834, -26.63273]]], "type": "Polygon"}, "id": "13", "properties": {"distancia_min_km": 41.951, "establecimiento": "629421", "ha_perdida_total": 749.381104551883, "interseca_wdpa": false, "km2_protegidos_en_poligono": 0.0, "wdpa_mas_cercana": "Copo"}, "type": "Feature"}, {"bbox": [-61.81234359741211, -26.446598788443428, -61.71192169189453, -26.419544943230655], "geometry": {"coordinates": [[[-61.812171936035156, -26.419544943230655], [-61.71192169189453, -26.420467337951784], [-61.71192169189453, -26.446598788443428], [-61.81234359741211, -26.446598788443428], [-61.812171936035156, -26.419544943230655]]], "type": "Polygon"}, "id": "14", "properties": {"distancia_min_km": 30.216, "establecimiento": "629442", "ha_perdida_total": 2285.1728010005677, "interseca_wdpa": false, "km2_protegidos_en_poligono": 0.0, "wdpa_mas_cercana": "Copo"}, "type": "Feature"}, {"bbox": [-61.8122, -26.53678, -61.71195, -26.50944], "geometry": {"coordinates": [[[-61.8121, -26.53678], [-61.8122, -26.5099], [-61.71213, -26.50944], [-61.71195, -26.53663], [-61.8121, -26.53678]]], "type": "Polygon"}, "id": "15", "properties": {"distancia_min_km": 39.41, "establecimiento": "457780", "ha_perdida_total": 1376.4608661537213, "interseca_wdpa": false, "km2_protegidos_en_poligono": 0.0, "wdpa_mas_cercana": "Copo"}, "type": "Feature"}, {"bbox": [-61.96102, -26.15343, -61.90961, -26.13517], "geometry": {"coordinates": [[[-61.96068, -26.13517], [-61.96102, -26.15297], [-61.90961, -26.15343], [-61.90961, -26.13556], [-61.96068, -26.13517]]], "type": "Polygon"}, "id": "16", "properties": {"distancia_min_km": 0.0, "establecimiento": "926627", "ha_perdida_total": 938.3304785215123, "interseca_wdpa": true, "km2_protegidos_en_poligono": 2.2338, "wdpa_mas_cercana": "Copo"}, "type": "Feature"}, {"bbox": [-62.14442, -26.75403, -62.11494, -26.72686], "geometry": {"coordinates": [[[-62.14442, -26.72686], [-62.14414, -26.75403], [-62.11494, -26.75389], [-62.11545, -26.72687], [-62.14442, -26.72686]]], "type": "Polygon"}, "id": "17", "properties": {"distancia_min_km": 63.26, "establecimiento": "675950", "ha_perdida_total": 587.5662359751027, "interseca_wdpa": false, "km2_protegidos_en_poligono": 0.0, "wdpa_mas_cercana": "Copo"}, "type": "Feature"}, {"bbox": [-62.098, -26.78091, -62.0883, -26.75366], "geometry": {"coordinates": [[[-62.098, -26.75366], [-62.09765, -26.78091], [-62.0883, -26.78076], [-62.08865, -26.75366], [-62.098, -26.75366]]], "type": "Polygon"}, "id": "18", "properties": {"distancia_min_km": 65.506, "establecimiento": "875133", "ha_perdida_total": 216.53905768686363, "interseca_wdpa": false, "km2_protegidos_en_poligono": 0.0, "wdpa_mas_cercana": "Copo"}, "type": "Feature"}, {"bbox": [-62.08805, -26.77134, -62.06466, -26.75384], "geometry": {"coordinates": [[[-62.08805, -26.75394], [-62.08784, -26.77134], [-62.06466, -26.77116], [-62.06493, -26.75384], [-62.08805, -26.75394]]], "type": "Polygon"}, "id": "19", "properties": {"distancia_min_km": 65.062, "establecimiento": "890091", "ha_perdida_total": 427.930612920878, "interseca_wdpa": false, "km2_protegidos_en_poligono": 0.0, "wdpa_mas_cercana": "Copo"}, "type": "Feature"}, {"bbox": [-62.16416, -26.75412, -62.14434, -26.73956], "geometry": {"coordinates": [[[-62.16416, -26.73982], [-62.16403, -26.75412], [-62.14434, -26.75393], [-62.14455, -26.73956], [-62.16416, -26.73982]]], "type": "Polygon"}, "id": "20", "properties": {"distancia_min_km": 65.425, "establecimiento": "952720", "ha_perdida_total": 298.39817450757704, "interseca_wdpa": false, "km2_protegidos_en_poligono": 0.0, "wdpa_mas_cercana": "Copo"}, "type": "Feature"}, {"bbox": [-62.12247, -26.75373, -62.11517, -26.72675], "geometry": {"coordinates": [[[-62.12247, -26.72683], [-62.11526, -26.72675], [-62.11517, -26.75373], [-62.12247, -26.75373], [-62.12247, -26.72683]]], "type": "Polygon"}, "id": "21", "properties": {"distancia_min_km": 63.242, "establecimiento": "918970", "ha_perdida_total": 23.09704593089384, "interseca_wdpa": false, "km2_protegidos_en_poligono": 0.0, "wdpa_mas_cercana": "Copo"}, "type": "Feature"}], "type": "FeatureCollection"});
+
+        
+    
+    geo_json_7409b993d4c4760a1dca02adce1350ab.bindTooltip(
+    function(layer){
+    let div = L.DomUtil.create('div');
+    
+    let handleObject = feature=>typeof(feature)=='object' ? JSON.stringify(feature) : feature;
+    let fields = ["establecimiento"];
+    let aliases = ["ID: "];
+    let table = '<table>' +
+        String(
+        fields.map(
+        (v,i)=>
+        `<tr>
+            <th>${aliases[i]}</th>
+            
+            <td>${handleObject(layer.feature.properties[v])}</td>
+        </tr>`).join(''))
+    +'</table>';
+    div.innerHTML=table;
+    
+    return div
+    }
+    ,{"className": "foliumtooltip", "sticky": true});
+                     
+    
+            geo_json_7409b993d4c4760a1dca02adce1350ab.addTo(feature_group_5da54aeccb9e36752cc42f82a237058d);
+        
+    
+            var circle_marker_658ca039790e191905c4e5fea2909172 = L.circleMarker(
+                [-26.54853, -62.031854161976234],
+                {"bubblingMouseEvents": true, "color": "#e41a1c", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#e41a1c", "fillOpacity": 0.85, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 4, "stroke": true, "weight": 3}
+            ).addTo(feature_group_5da54aeccb9e36752cc42f82a237058d);
+        
+    
+        var popup_0b4b1c9c37442243a069356d97f8ca4e = L.popup({"maxWidth": 360});
+
+        
+            
+                var html_7d91d84add2581e76baa69d453260d3c = $(`<div id="html_7d91d84add2581e76baa69d453260d3c" style="width: 100.0%; height: 100.0%;"><b>Establecimiento:</b> 828023<br><b>Interseca WDPA:</b> False<br><b>Área WDPA dentro:</b> 0.0 km²<br><b>WDPA más cercana:</b> Copo<br><b>Distancia mínima:</b> 40.671 km<br><b>Pérdida 2001–2023 (Hansen):</b> 581.63 ha</div>`)[0];
+                popup_0b4b1c9c37442243a069356d97f8ca4e.setContent(html_7d91d84add2581e76baa69d453260d3c);
+            
+        
+
+        circle_marker_658ca039790e191905c4e5fea2909172.bindPopup(popup_0b4b1c9c37442243a069356d97f8ca4e)
+        ;
+
+        
+    
+    
+            circle_marker_658ca039790e191905c4e5fea2909172.bindTooltip(
+                `<div>
+                     Establecimiento 828023
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_marker_e42eca6fd8fb721fceb2fd5a72df3cfa = L.circleMarker(
+                [-26.547765, -62.0610079140516],
+                {"bubblingMouseEvents": true, "color": "#e41a1c", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#e41a1c", "fillOpacity": 0.85, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 4, "stroke": true, "weight": 3}
+            ).addTo(feature_group_5da54aeccb9e36752cc42f82a237058d);
+        
+    
+        var popup_226b4b1fce537169393dda2d4f803915 = L.popup({"maxWidth": 360});
+
+        
+            
+                var html_e69fd6c9d9a0988d2159ccaed29bfa35 = $(`<div id="html_e69fd6c9d9a0988d2159ccaed29bfa35" style="width: 100.0%; height: 100.0%;"><b>Establecimiento:</b> 846358<br><b>Interseca WDPA:</b> False<br><b>Área WDPA dentro:</b> 0.0 km²<br><b>WDPA más cercana:</b> Copo<br><b>Distancia mínima:</b> 41.004 km<br><b>Pérdida 2001–2023 (Hansen):</b> 373.41 ha</div>`)[0];
+                popup_226b4b1fce537169393dda2d4f803915.setContent(html_e69fd6c9d9a0988d2159ccaed29bfa35);
+            
+        
+
+        circle_marker_e42eca6fd8fb721fceb2fd5a72df3cfa.bindPopup(popup_226b4b1fce537169393dda2d4f803915)
+        ;
+
+        
+    
+    
+            circle_marker_e42eca6fd8fb721fceb2fd5a72df3cfa.bindTooltip(
+                `<div>
+                     Establecimiento 846358
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_marker_5d685b68c8e567764f372de74580d67f = L.circleMarker(
+                [-26.62935168823026, -62.02734863862412],
+                {"bubblingMouseEvents": true, "color": "#e41a1c", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#e41a1c", "fillOpacity": 0.85, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 4, "stroke": true, "weight": 3}
+            ).addTo(feature_group_5da54aeccb9e36752cc42f82a237058d);
+        
+    
+        var popup_b18deb42bee640bface633e9c75d6f34 = L.popup({"maxWidth": 360});
+
+        
+            
+                var html_8589f215b19650a8c7073b09048c1e5b = $(`<div id="html_8589f215b19650a8c7073b09048c1e5b" style="width: 100.0%; height: 100.0%;"><b>Establecimiento:</b> 629461<br><b>Interseca WDPA:</b> False<br><b>Área WDPA dentro:</b> 0.0 km²<br><b>WDPA más cercana:</b> Copo<br><b>Distancia mínima:</b> 48.924 km<br><b>Pérdida 2001–2023 (Hansen):</b> 848.03 ha</div>`)[0];
+                popup_b18deb42bee640bface633e9c75d6f34.setContent(html_8589f215b19650a8c7073b09048c1e5b);
+            
+        
+
+        circle_marker_5d685b68c8e567764f372de74580d67f.bindPopup(popup_b18deb42bee640bface633e9c75d6f34)
+        ;
+
+        
+    
+    
+            circle_marker_5d685b68c8e567764f372de74580d67f.bindTooltip(
+                `<div>
+                     Establecimiento 629461
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_marker_0497144eadb5677450476c9b352035a7 = L.circleMarker(
+                [-26.717745, -61.97686991771484],
+                {"bubblingMouseEvents": true, "color": "#e41a1c", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#e41a1c", "fillOpacity": 0.85, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 4, "stroke": true, "weight": 3}
+            ).addTo(feature_group_5da54aeccb9e36752cc42f82a237058d);
+        
+    
+        var popup_e23730804dd241cba2547ea9483512e8 = L.popup({"maxWidth": 360});
+
+        
+            
+                var html_0e01c4e514f6e6781abc8e73b5ac8c83 = $(`<div id="html_0e01c4e514f6e6781abc8e73b5ac8c83" style="width: 100.0%; height: 100.0%;"><b>Establecimiento:</b> 827998<br><b>Interseca WDPA:</b> False<br><b>Área WDPA dentro:</b> 0.0 km²<br><b>WDPA más cercana:</b> Copo<br><b>Distancia mínima:</b> 58.029 km<br><b>Pérdida 2001–2023 (Hansen):</b> 431.91 ha</div>`)[0];
+                popup_e23730804dd241cba2547ea9483512e8.setContent(html_0e01c4e514f6e6781abc8e73b5ac8c83);
+            
+        
+
+        circle_marker_0497144eadb5677450476c9b352035a7.bindPopup(popup_e23730804dd241cba2547ea9483512e8)
+        ;
+
+        
+    
+    
+            circle_marker_0497144eadb5677450476c9b352035a7.bindTooltip(
+                `<div>
+                     Establecimiento 827998
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_marker_447fa2883fc0a05b54c658b5e9cb8696 = L.circleMarker(
+                [-26.719405000000002, -61.95667998509687],
+                {"bubblingMouseEvents": true, "color": "#e41a1c", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#e41a1c", "fillOpacity": 0.85, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 4, "stroke": true, "weight": 3}
+            ).addTo(feature_group_5da54aeccb9e36752cc42f82a237058d);
+        
+    
+        var popup_79cd958d1904aa02e9a7284516586278 = L.popup({"maxWidth": 360});
+
+        
+            
+                var html_6d1a6bfd399d4d04cc8cf3fdc0027646 = $(`<div id="html_6d1a6bfd399d4d04cc8cf3fdc0027646" style="width: 100.0%; height: 100.0%;"><b>Establecimiento:</b> 857625<br><b>Interseca WDPA:</b> False<br><b>Área WDPA dentro:</b> 0.0 km²<br><b>WDPA más cercana:</b> Copo<br><b>Distancia mínima:</b> 59.828 km<br><b>Pérdida 2001–2023 (Hansen):</b> 96.15 ha</div>`)[0];
+                popup_79cd958d1904aa02e9a7284516586278.setContent(html_6d1a6bfd399d4d04cc8cf3fdc0027646);
+            
+        
+
+        circle_marker_447fa2883fc0a05b54c658b5e9cb8696.bindPopup(popup_79cd958d1904aa02e9a7284516586278)
+        ;
+
+        
+    
+    
+            circle_marker_447fa2883fc0a05b54c658b5e9cb8696.bindTooltip(
+                `<div>
+                     Establecimiento 857625
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_marker_c35071e6fac3d791cc33536064db472b = L.circleMarker(
+                [-26.704884999999997, -61.943736947737065],
+                {"bubblingMouseEvents": true, "color": "#e41a1c", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#e41a1c", "fillOpacity": 0.85, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 4, "stroke": true, "weight": 3}
+            ).addTo(feature_group_5da54aeccb9e36752cc42f82a237058d);
+        
+    
+        var popup_8e98596ebd761599d21041a4880d58d3 = L.popup({"maxWidth": 360});
+
+        
+            
+                var html_f164eeb37263ca11b31ed95d95bc5889 = $(`<div id="html_f164eeb37263ca11b31ed95d95bc5889" style="width: 100.0%; height: 100.0%;"><b>Establecimiento:</b> 885496<br><b>Interseca WDPA:</b> False<br><b>Área WDPA dentro:</b> 0.0 km²<br><b>WDPA más cercana:</b> Copo<br><b>Distancia mínima:</b> 57.984 km<br><b>Pérdida 2001–2023 (Hansen):</b> 99.05 ha</div>`)[0];
+                popup_8e98596ebd761599d21041a4880d58d3.setContent(html_f164eeb37263ca11b31ed95d95bc5889);
+            
+        
+
+        circle_marker_c35071e6fac3d791cc33536064db472b.bindPopup(popup_8e98596ebd761599d21041a4880d58d3)
+        ;
+
+        
+    
+    
+            circle_marker_c35071e6fac3d791cc33536064db472b.bindTooltip(
+                `<div>
+                     Establecimiento 885496
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_marker_43c3bb20767143859412424fdba54fdd = L.circleMarker(
+                [-26.712764999999997, -61.93638474445697],
+                {"bubblingMouseEvents": true, "color": "#e41a1c", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#e41a1c", "fillOpacity": 0.85, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 4, "stroke": true, "weight": 3}
+            ).addTo(feature_group_5da54aeccb9e36752cc42f82a237058d);
+        
+    
+        var popup_f67172741a6510f89ca7da576a37fff6 = L.popup({"maxWidth": 360});
+
+        
+            
+                var html_6601714a9814a530b11aab48008a66ac = $(`<div id="html_6601714a9814a530b11aab48008a66ac" style="width: 100.0%; height: 100.0%;"><b>Establecimiento:</b> 885498<br><b>Interseca WDPA:</b> False<br><b>Área WDPA dentro:</b> 0.0 km²<br><b>WDPA más cercana:</b> Copo<br><b>Distancia mínima:</b> 58.001 km<br><b>Pérdida 2001–2023 (Hansen):</b> 151.61 ha</div>`)[0];
+                popup_f67172741a6510f89ca7da576a37fff6.setContent(html_6601714a9814a530b11aab48008a66ac);
+            
+        
+
+        circle_marker_43c3bb20767143859412424fdba54fdd.bindPopup(popup_f67172741a6510f89ca7da576a37fff6)
+        ;
+
+        
+    
+    
+            circle_marker_43c3bb20767143859412424fdba54fdd.bindTooltip(
+                `<div>
+                     Establecimiento 885498
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_marker_574ff012f59c98090fdf1091ced6f702 = L.circleMarker(
+                [-26.608557456824883, -62.27869493610109],
+                {"bubblingMouseEvents": true, "color": "#e41a1c", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#e41a1c", "fillOpacity": 0.85, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 4, "stroke": true, "weight": 3}
+            ).addTo(feature_group_5da54aeccb9e36752cc42f82a237058d);
+        
+    
+        var popup_4bcff4ea4e6f8bc39edbbcaa65233584 = L.popup({"maxWidth": 360});
+
+        
+            
+                var html_709bb263cca3002b3d5114303604b03a = $(`<div id="html_709bb263cca3002b3d5114303604b03a" style="width: 100.0%; height: 100.0%;"><b>Establecimiento:</b> 457784<br><b>Interseca WDPA:</b> False<br><b>Área WDPA dentro:</b> 0.0 km²<br><b>WDPA más cercana:</b> Copo<br><b>Distancia mínima:</b> 55.707 km<br><b>Pérdida 2001–2023 (Hansen):</b> 350.96 ha</div>`)[0];
+                popup_4bcff4ea4e6f8bc39edbbcaa65233584.setContent(html_709bb263cca3002b3d5114303604b03a);
+            
+        
+
+        circle_marker_574ff012f59c98090fdf1091ced6f702.bindPopup(popup_4bcff4ea4e6f8bc39edbbcaa65233584)
+        ;
+
+        
+    
+    
+            circle_marker_574ff012f59c98090fdf1091ced6f702.bindTooltip(
+                `<div>
+                     Establecimiento 457784
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_marker_52725dd089ce4463fa88d01b3bf8dbdf = L.circleMarker(
+                [-26.584304989074337, -62.278876576213975],
+                {"bubblingMouseEvents": true, "color": "#e41a1c", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#e41a1c", "fillOpacity": 0.85, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 4, "stroke": true, "weight": 3}
+            ).addTo(feature_group_5da54aeccb9e36752cc42f82a237058d);
+        
+    
+        var popup_8424bc19ce18ce095180c2cccf5536ee = L.popup({"maxWidth": 360});
+
+        
+            
+                var html_6c4fe8b43955efb77f7015a0435929bb = $(`<div id="html_6c4fe8b43955efb77f7015a0435929bb" style="width: 100.0%; height: 100.0%;"><b>Establecimiento:</b> 457782<br><b>Interseca WDPA:</b> False<br><b>Área WDPA dentro:</b> 0.0 km²<br><b>WDPA más cercana:</b> Copo<br><b>Distancia mínima:</b> 53.251 km<br><b>Pérdida 2001–2023 (Hansen):</b> 360.8 ha</div>`)[0];
+                popup_8424bc19ce18ce095180c2cccf5536ee.setContent(html_6c4fe8b43955efb77f7015a0435929bb);
+            
+        
+
+        circle_marker_52725dd089ce4463fa88d01b3bf8dbdf.bindPopup(popup_8424bc19ce18ce095180c2cccf5536ee)
+        ;
+
+        
+    
+    
+            circle_marker_52725dd089ce4463fa88d01b3bf8dbdf.bindTooltip(
+                `<div>
+                     Establecimiento 457782
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_marker_ed2eacf4fb3c1cf13de9597dcd44e23c = L.circleMarker(
+                [-26.558320000000002, -62.048528373190685],
+                {"bubblingMouseEvents": true, "color": "#e41a1c", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#e41a1c", "fillOpacity": 0.85, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 4, "stroke": true, "weight": 3}
+            ).addTo(feature_group_5da54aeccb9e36752cc42f82a237058d);
+        
+    
+        var popup_2e571153cad3962e5349197a0f77d4c8 = L.popup({"maxWidth": 360});
+
+        
+            
+                var html_27c3aea6f03e25ea23f39e835b0ac09f = $(`<div id="html_27c3aea6f03e25ea23f39e835b0ac09f" style="width: 100.0%; height: 100.0%;"><b>Establecimiento:</b> 657906<br><b>Interseca WDPA:</b> False<br><b>Área WDPA dentro:</b> 0.0 km²<br><b>WDPA más cercana:</b> Copo<br><b>Distancia mínima:</b> 40.852 km<br><b>Pérdida 2001–2023 (Hansen):</b> 626.42 ha</div>`)[0];
+                popup_2e571153cad3962e5349197a0f77d4c8.setContent(html_27c3aea6f03e25ea23f39e835b0ac09f);
+            
+        
+
+        circle_marker_ed2eacf4fb3c1cf13de9597dcd44e23c.bindPopup(popup_2e571153cad3962e5349197a0f77d4c8)
+        ;
+
+        
+    
+    
+            circle_marker_ed2eacf4fb3c1cf13de9597dcd44e23c.bindTooltip(
+                `<div>
+                     Establecimiento 657906
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_marker_e6e1edb960d63729cd118d0203d398d1 = L.circleMarker(
+                [-26.197015, -62.595136537114485],
+                {"bubblingMouseEvents": true, "color": "#e41a1c", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#e41a1c", "fillOpacity": 0.85, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 4, "stroke": true, "weight": 3}
+            ).addTo(feature_group_5da54aeccb9e36752cc42f82a237058d);
+        
+    
+        var popup_0ae46d346fc53df9bf043ff83ccd8f8c = L.popup({"maxWidth": 360});
+
+        
+            
+                var html_ad16142ca779d995f8e9151f6a463ee3 = $(`<div id="html_ad16142ca779d995f8e9151f6a463ee3" style="width: 100.0%; height: 100.0%;"><b>Establecimiento:</b> 923028<br><b>Interseca WDPA:</b> False<br><b>Área WDPA dentro:</b> 0.0 km²<br><b>WDPA más cercana:</b> Copo<br><b>Distancia mínima:</b> 34.625 km<br><b>Pérdida 2001–2023 (Hansen):</b> 906.29 ha</div>`)[0];
+                popup_0ae46d346fc53df9bf043ff83ccd8f8c.setContent(html_ad16142ca779d995f8e9151f6a463ee3);
+            
+        
+
+        circle_marker_e6e1edb960d63729cd118d0203d398d1.bindPopup(popup_0ae46d346fc53df9bf043ff83ccd8f8c)
+        ;
+
+        
+    
+    
+            circle_marker_e6e1edb960d63729cd118d0203d398d1.bindTooltip(
+                `<div>
+                     Establecimiento 923028
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_marker_381282fb0dafaab09c823de94f6fe949 = L.circleMarker(
+                [-26.599465000000002, -61.97034981326907],
+                {"bubblingMouseEvents": true, "color": "#e41a1c", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#e41a1c", "fillOpacity": 0.85, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 4, "stroke": true, "weight": 3}
+            ).addTo(feature_group_5da54aeccb9e36752cc42f82a237058d);
+        
+    
+        var popup_6ff4fc73f52d00b35aa95243f733b4f0 = L.popup({"maxWidth": 360});
+
+        
+            
+                var html_8d1578df53ece6e9e176edc47a4fe25a = $(`<div id="html_8d1578df53ece6e9e176edc47a4fe25a" style="width: 100.0%; height: 100.0%;"><b>Establecimiento:</b> 937514<br><b>Interseca WDPA:</b> False<br><b>Área WDPA dentro:</b> 0.0 km²<br><b>WDPA más cercana:</b> Copo<br><b>Distancia mínima:</b> 45.701 km<br><b>Pérdida 2001–2023 (Hansen):</b> 51.18 ha</div>`)[0];
+                popup_6ff4fc73f52d00b35aa95243f733b4f0.setContent(html_8d1578df53ece6e9e176edc47a4fe25a);
+            
+        
+
+        circle_marker_381282fb0dafaab09c823de94f6fe949.bindPopup(popup_6ff4fc73f52d00b35aa95243f733b4f0)
+        ;
+
+        
+    
+    
+            circle_marker_381282fb0dafaab09c823de94f6fe949.bindTooltip(
+                `<div>
+                     Establecimiento 937514
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_marker_d0436ef237b7d40fed002dcc0ba731c8 = L.circleMarker(
+                [-26.658725, -61.97405889113412],
+                {"bubblingMouseEvents": true, "color": "#e41a1c", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#e41a1c", "fillOpacity": 0.85, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 4, "stroke": true, "weight": 3}
+            ).addTo(feature_group_5da54aeccb9e36752cc42f82a237058d);
+        
+    
+        var popup_ef77a0265e5c83622eca5a7471d02f64 = L.popup({"maxWidth": 360});
+
+        
+            
+                var html_9d04575813715f8b50d8045b53239a77 = $(`<div id="html_9d04575813715f8b50d8045b53239a77" style="width: 100.0%; height: 100.0%;"><b>Establecimiento:</b> 958542<br><b>Interseca WDPA:</b> False<br><b>Área WDPA dentro:</b> 0.0 km²<br><b>WDPA más cercana:</b> Copo<br><b>Distancia mínima:</b> 50.599 km<br><b>Pérdida 2001–2023 (Hansen):</b> 590.83 ha</div>`)[0];
+                popup_ef77a0265e5c83622eca5a7471d02f64.setContent(html_9d04575813715f8b50d8045b53239a77);
+            
+        
+
+        circle_marker_d0436ef237b7d40fed002dcc0ba731c8.bindPopup(popup_ef77a0265e5c83622eca5a7471d02f64)
+        ;
+
+        
+    
+    
+            circle_marker_d0436ef237b7d40fed002dcc0ba731c8.bindTooltip(
+                `<div>
+                     Establecimiento 958542
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_marker_7a0d29c2324ffbb24c91ae6b79c6c1b8 = L.circleMarker(
+                [-26.594045, -61.952081675149515],
+                {"bubblingMouseEvents": true, "color": "#e41a1c", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#e41a1c", "fillOpacity": 0.85, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 4, "stroke": true, "weight": 3}
+            ).addTo(feature_group_5da54aeccb9e36752cc42f82a237058d);
+        
+    
+        var popup_61b268c88f0452b0ed6d6d4a1a57fd1b = L.popup({"maxWidth": 360});
+
+        
+            
+                var html_113bbd2c77f03e48ad2d833ae0fad490 = $(`<div id="html_113bbd2c77f03e48ad2d833ae0fad490" style="width: 100.0%; height: 100.0%;"><b>Establecimiento:</b> 629421<br><b>Interseca WDPA:</b> False<br><b>Área WDPA dentro:</b> 0.0 km²<br><b>WDPA más cercana:</b> Copo<br><b>Distancia mínima:</b> 41.951 km<br><b>Pérdida 2001–2023 (Hansen):</b> 749.38 ha</div>`)[0];
+                popup_61b268c88f0452b0ed6d6d4a1a57fd1b.setContent(html_113bbd2c77f03e48ad2d833ae0fad490);
+            
+        
+
+        circle_marker_7a0d29c2324ffbb24c91ae6b79c6c1b8.bindPopup(popup_61b268c88f0452b0ed6d6d4a1a57fd1b)
+        ;
+
+        
+    
+    
+            circle_marker_7a0d29c2324ffbb24c91ae6b79c6c1b8.bindTooltip(
+                `<div>
+                     Establecimiento 629421
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_marker_f200b112817c4029f5e281277a6c6a59 = L.circleMarker(
+                [-26.433533063197608, -61.76209119249802],
+                {"bubblingMouseEvents": true, "color": "#e41a1c", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#e41a1c", "fillOpacity": 0.85, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 4, "stroke": true, "weight": 3}
+            ).addTo(feature_group_5da54aeccb9e36752cc42f82a237058d);
+        
+    
+        var popup_b5abaefc83b1dc836bf1554cbcd3e81f = L.popup({"maxWidth": 360});
+
+        
+            
+                var html_87f1301e937e0c56b4db4167263afbf4 = $(`<div id="html_87f1301e937e0c56b4db4167263afbf4" style="width: 100.0%; height: 100.0%;"><b>Establecimiento:</b> 629442<br><b>Interseca WDPA:</b> False<br><b>Área WDPA dentro:</b> 0.0 km²<br><b>WDPA más cercana:</b> Copo<br><b>Distancia mínima:</b> 30.216 km<br><b>Pérdida 2001–2023 (Hansen):</b> 2285.17 ha</div>`)[0];
+                popup_b5abaefc83b1dc836bf1554cbcd3e81f.setContent(html_87f1301e937e0c56b4db4167263afbf4);
+            
+        
+
+        circle_marker_f200b112817c4029f5e281277a6c6a59.bindPopup(popup_b5abaefc83b1dc836bf1554cbcd3e81f)
+        ;
+
+        
+    
+    
+            circle_marker_f200b112817c4029f5e281277a6c6a59.bindTooltip(
+                `<div>
+                     Establecimiento 629442
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_marker_8ef6085f2e71338c29b2008dec427e4e = L.circleMarker(
+                [-26.523265, -61.76209437819962],
+                {"bubblingMouseEvents": true, "color": "#e41a1c", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#e41a1c", "fillOpacity": 0.85, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 4, "stroke": true, "weight": 3}
+            ).addTo(feature_group_5da54aeccb9e36752cc42f82a237058d);
+        
+    
+        var popup_a21f8fdc0573e45969e3d41ba137a9fd = L.popup({"maxWidth": 360});
+
+        
+            
+                var html_51dc6267b0e4c81c055c526cf9ad848c = $(`<div id="html_51dc6267b0e4c81c055c526cf9ad848c" style="width: 100.0%; height: 100.0%;"><b>Establecimiento:</b> 457780<br><b>Interseca WDPA:</b> False<br><b>Área WDPA dentro:</b> 0.0 km²<br><b>WDPA más cercana:</b> Copo<br><b>Distancia mínima:</b> 39.41 km<br><b>Pérdida 2001–2023 (Hansen):</b> 1376.46 ha</div>`)[0];
+                popup_a21f8fdc0573e45969e3d41ba137a9fd.setContent(html_51dc6267b0e4c81c055c526cf9ad848c);
+            
+        
+
+        circle_marker_8ef6085f2e71338c29b2008dec427e4e.bindPopup(popup_a21f8fdc0573e45969e3d41ba137a9fd)
+        ;
+
+        
+    
+    
+            circle_marker_8ef6085f2e71338c29b2008dec427e4e.bindTooltip(
+                `<div>
+                     Establecimiento 457780
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_marker_e4a5c4ddfaa25eeb7b08d84f91af177b = L.circleMarker(
+                [-26.144265, -61.93523186235955],
+                {"bubblingMouseEvents": true, "color": "#e41a1c", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#e41a1c", "fillOpacity": 0.85, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 4, "stroke": true, "weight": 3}
+            ).addTo(feature_group_5da54aeccb9e36752cc42f82a237058d);
+        
+    
+        var popup_ba735c2ddc5164496bc04ee146d4e8ca = L.popup({"maxWidth": 360});
+
+        
+            
+                var html_4c4adc08119edf556d3f66ac3a1d7fc1 = $(`<div id="html_4c4adc08119edf556d3f66ac3a1d7fc1" style="width: 100.0%; height: 100.0%;"><b>Establecimiento:</b> 926627<br><b>Interseca WDPA:</b> True<br><b>Área WDPA dentro:</b> 2.2338 km²<br><b>WDPA más cercana:</b> Copo<br><b>Distancia mínima:</b> 0.0 km<br><b>Pérdida 2001–2023 (Hansen):</b> 938.33 ha</div>`)[0];
+                popup_ba735c2ddc5164496bc04ee146d4e8ca.setContent(html_4c4adc08119edf556d3f66ac3a1d7fc1);
+            
+        
+
+        circle_marker_e4a5c4ddfaa25eeb7b08d84f91af177b.bindPopup(popup_ba735c2ddc5164496bc04ee146d4e8ca)
+        ;
+
+        
+    
+    
+            circle_marker_e4a5c4ddfaa25eeb7b08d84f91af177b.bindTooltip(
+                `<div>
+                     Establecimiento 926627
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_marker_9adb86d61d5325b37eb3bd8c698b82dd = L.circleMarker(
+                [-26.740380000000002, -62.12973783492823],
+                {"bubblingMouseEvents": true, "color": "#e41a1c", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#e41a1c", "fillOpacity": 0.85, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 4, "stroke": true, "weight": 3}
+            ).addTo(feature_group_5da54aeccb9e36752cc42f82a237058d);
+        
+    
+        var popup_2038297f3c70be5b8b2bf1226f6d0398 = L.popup({"maxWidth": 360});
+
+        
+            
+                var html_eb9b4b3099bd53031864fafaa6c447db = $(`<div id="html_eb9b4b3099bd53031864fafaa6c447db" style="width: 100.0%; height: 100.0%;"><b>Establecimiento:</b> 675950<br><b>Interseca WDPA:</b> False<br><b>Área WDPA dentro:</b> 0.0 km²<br><b>WDPA más cercana:</b> Copo<br><b>Distancia mínima:</b> 63.26 km<br><b>Pérdida 2001–2023 (Hansen):</b> 587.57 ha</div>`)[0];
+                popup_2038297f3c70be5b8b2bf1226f6d0398.setContent(html_eb9b4b3099bd53031864fafaa6c447db);
+            
+        
+
+        circle_marker_9adb86d61d5325b37eb3bd8c698b82dd.bindPopup(popup_2038297f3c70be5b8b2bf1226f6d0398)
+        ;
+
+        
+    
+    
+            circle_marker_9adb86d61d5325b37eb3bd8c698b82dd.bindTooltip(
+                `<div>
+                     Establecimiento 675950
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_marker_fd6a79651d398284ff4f368b7f9a7d21 = L.circleMarker(
+                [-26.76721, -62.09315048165138],
+                {"bubblingMouseEvents": true, "color": "#e41a1c", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#e41a1c", "fillOpacity": 0.85, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 4, "stroke": true, "weight": 3}
+            ).addTo(feature_group_5da54aeccb9e36752cc42f82a237058d);
+        
+    
+        var popup_c4d4a6fb812b4b20521daa19ace7795b = L.popup({"maxWidth": 360});
+
+        
+            
+                var html_260a12b9fbe5b1ca3b64d56473302077 = $(`<div id="html_260a12b9fbe5b1ca3b64d56473302077" style="width: 100.0%; height: 100.0%;"><b>Establecimiento:</b> 875133<br><b>Interseca WDPA:</b> False<br><b>Área WDPA dentro:</b> 0.0 km²<br><b>WDPA más cercana:</b> Copo<br><b>Distancia mínima:</b> 65.506 km<br><b>Pérdida 2001–2023 (Hansen):</b> 216.54 ha</div>`)[0];
+                popup_c4d4a6fb812b4b20521daa19ace7795b.setContent(html_260a12b9fbe5b1ca3b64d56473302077);
+            
+        
+
+        circle_marker_fd6a79651d398284ff4f368b7f9a7d21.bindPopup(popup_c4d4a6fb812b4b20521daa19ace7795b)
+        ;
+
+        
+    
+    
+            circle_marker_fd6a79651d398284ff4f368b7f9a7d21.bindTooltip(
+                `<div>
+                     Establecimiento 875133
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_marker_df91376f6b55c3ace0123e3dbe32e784 = L.circleMarker(
+                [-26.762549999999997, -62.07637015338059],
+                {"bubblingMouseEvents": true, "color": "#e41a1c", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#e41a1c", "fillOpacity": 0.85, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 4, "stroke": true, "weight": 3}
+            ).addTo(feature_group_5da54aeccb9e36752cc42f82a237058d);
+        
+    
+        var popup_a713d1a685e3953bc5a96539c883ebc3 = L.popup({"maxWidth": 360});
+
+        
+            
+                var html_670a81dc606e55623319de5897c7ed28 = $(`<div id="html_670a81dc606e55623319de5897c7ed28" style="width: 100.0%; height: 100.0%;"><b>Establecimiento:</b> 890091<br><b>Interseca WDPA:</b> False<br><b>Área WDPA dentro:</b> 0.0 km²<br><b>WDPA más cercana:</b> Copo<br><b>Distancia mínima:</b> 65.062 km<br><b>Pérdida 2001–2023 (Hansen):</b> 427.93 ha</div>`)[0];
+                popup_a713d1a685e3953bc5a96539c883ebc3.setContent(html_670a81dc606e55623319de5897c7ed28);
+            
+        
+
+        circle_marker_df91376f6b55c3ace0123e3dbe32e784.bindPopup(popup_a713d1a685e3953bc5a96539c883ebc3)
+        ;
+
+        
+    
+    
+            circle_marker_df91376f6b55c3ace0123e3dbe32e784.bindTooltip(
+                `<div>
+                     Establecimiento 890091
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_marker_4001127463fedf9728b7c5d88b4c8914 = L.circleMarker(
+                [-26.746875000000003, -62.15426948192257],
+                {"bubblingMouseEvents": true, "color": "#e41a1c", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#e41a1c", "fillOpacity": 0.85, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 4, "stroke": true, "weight": 3}
+            ).addTo(feature_group_5da54aeccb9e36752cc42f82a237058d);
+        
+    
+        var popup_dce4167c3ff4e6e8556890541689a210 = L.popup({"maxWidth": 360});
+
+        
+            
+                var html_6e526574237e228cd55800f1881f4b96 = $(`<div id="html_6e526574237e228cd55800f1881f4b96" style="width: 100.0%; height: 100.0%;"><b>Establecimiento:</b> 952720<br><b>Interseca WDPA:</b> False<br><b>Área WDPA dentro:</b> 0.0 km²<br><b>WDPA más cercana:</b> Copo<br><b>Distancia mínima:</b> 65.425 km<br><b>Pérdida 2001–2023 (Hansen):</b> 298.4 ha</div>`)[0];
+                popup_dce4167c3ff4e6e8556890541689a210.setContent(html_6e526574237e228cd55800f1881f4b96);
+            
+        
+
+        circle_marker_4001127463fedf9728b7c5d88b4c8914.bindPopup(popup_dce4167c3ff4e6e8556890541689a210)
+        ;
+
+        
+    
+    
+            circle_marker_4001127463fedf9728b7c5d88b4c8914.bindTooltip(
+                `<div>
+                     Establecimiento 952720
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_marker_4c9a9b9bd6492856b2fdb49ee16fcd04 = L.circleMarker(
+                [-26.74028, -62.118842433283916],
+                {"bubblingMouseEvents": true, "color": "#e41a1c", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#e41a1c", "fillOpacity": 0.85, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 4, "stroke": true, "weight": 3}
+            ).addTo(feature_group_5da54aeccb9e36752cc42f82a237058d);
+        
+    
+        var popup_6f5595fd17e43a000547f2fa79f2f1d4 = L.popup({"maxWidth": 360});
+
+        
+            
+                var html_1306dc3bf1bb28e8d6f328f451093690 = $(`<div id="html_1306dc3bf1bb28e8d6f328f451093690" style="width: 100.0%; height: 100.0%;"><b>Establecimiento:</b> 918970<br><b>Interseca WDPA:</b> False<br><b>Área WDPA dentro:</b> 0.0 km²<br><b>WDPA más cercana:</b> Copo<br><b>Distancia mínima:</b> 63.242 km<br><b>Pérdida 2001–2023 (Hansen):</b> 23.1 ha</div>`)[0];
+                popup_6f5595fd17e43a000547f2fa79f2f1d4.setContent(html_1306dc3bf1bb28e8d6f328f451093690);
+            
+        
+
+        circle_marker_4c9a9b9bd6492856b2fdb49ee16fcd04.bindPopup(popup_6f5595fd17e43a000547f2fa79f2f1d4)
+        ;
+
+        
+    
+    
+            circle_marker_4c9a9b9bd6492856b2fdb49ee16fcd04.bindTooltip(
+                `<div>
+                     Establecimiento 918970
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            feature_group_5da54aeccb9e36752cc42f82a237058d.addTo(map_3f5113e286b53cf597b223162c92b6fd);
+        
+    
+            var measure_control_5a0ca5bb5d2a4e3b6630b7d3b64b5f71 = new L.Control.Measure(
+                {"position": "topleft", "primaryAreaUnit": "sqkilometers", "primaryLengthUnit": "kilometers", "secondaryAreaUnit": "acres", "secondaryLengthUnit": "miles"});
+            map_3f5113e286b53cf597b223162c92b6fd.addControl(measure_control_5a0ca5bb5d2a4e3b6630b7d3b64b5f71);
+
+            // Workaround for using this plugin with Leaflet>=1.8.0
+            // https://github.com/ljagis/leaflet-measure/issues/171
+            L.Control.Measure.include({
+                _setCaptureMarkerIcon: function () {
+                    // disable autopan
+                    this._captureMarker.options.autoPanOnFocus = false;
+                    // default function
+                    this._captureMarker.setIcon(
+                        L.divIcon({
+                            iconSize: this._map.getSize().multiplyBy(2)
+                        })
+                    );
+                },
+            });
+
+        
+    
+            var mouse_position_9d7fce25e0625d9b6a8d71b34518b348 = new L.Control.MousePosition(
+                {"emptyString": "Unavailable", "lngFirst": false, "numDigits": 5, "position": "bottomleft", "prefix": "Lat/Lon", "separator": " | "}
+            );
+            mouse_position_9d7fce25e0625d9b6a8d71b34518b348.options["latFormatter"] =
+                undefined;
+            mouse_position_9d7fce25e0625d9b6a8d71b34518b348.options["lngFormatter"] =
+                undefined;
+            map_3f5113e286b53cf597b223162c92b6fd.addControl(mouse_position_9d7fce25e0625d9b6a8d71b34518b348);
+        
+    
+            var tile_layer_cbf706713176a6f6425bb00d6219026c = L.tileLayer(
+                "https://tile.openstreetmap.org/{z}/{x}/{y}.png",
+                {"attribution": "\u0026copy; \u003ca href=\"https://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors", "detectRetina": false, "maxNativeZoom": 19, "maxZoom": 19, "minZoom": 0, "noWrap": false, "opacity": 1, "subdomains": "abc", "tms": false}
+            );
+            var mini_map_8339eb7b71730bca5fe20df120c5f7f9 = new L.Control.MiniMap(
+                tile_layer_cbf706713176a6f6425bb00d6219026c,
+                {"autoToggleDisplay": false, "centerFixed": false, "collapsedHeight": 25, "collapsedWidth": 25, "height": 150, "minimized": false, "position": "bottomright", "toggleDisplay": true, "width": 150, "zoomAnimation": false, "zoomLevelOffset": -5}
+            );
+            map_3f5113e286b53cf597b223162c92b6fd.addControl(mini_map_8339eb7b71730bca5fe20df120c5f7f9);
+        
+    
+            map_3f5113e286b53cf597b223162c92b6fd.fitBounds(
+                [[-26.78091, -62.61359], [-26.13517, -61.71192169189453]],
+                {}
+            );
+        
+    
+            var layer_control_94a88a141bb723d1f632ca1df38c9402_layers = {
+                base_layers : {
+                    "OpenStreetMap" : tile_layer_6d997771c4aafc9121e949d6f65e4567,
+                    "Esri World Imagery" : tile_layer_3d772ad1cbda5fd0d0d667b2ffe28106,
+                    "Carto Positron (claro)" : tile_layer_dfed4d7f0dd2232a54549940b3c5a76c,
+                    "OpenTopoMap" : tile_layer_6208fa58862cd2a8c2093a51c060cc98,
+                },
+                overlays :  {
+                    "Etiquetas (localidades)" : tile_layer_a4a23fcc3b266c78aaa2e0efc5a7c640,
+                    "\u00c1reas protegidas (WDPA)" : tile_layer_1c05665420a9d61497ffde28e1db58fa,
+                    "Provincias" : tile_layer_3e6c79d096a5545ae5dd299502de13c4,
+                    "Departamentos" : tile_layer_32c2af66cb926ac3ae352de80606fb52,
+                    "P\u00e9rdida forestal 2001\u20132023 (Hansen)" : tile_layer_0a16c9bea90394d0b9764492e7cf5e3d,
+                    "Establecimientos (lote_02)" : feature_group_5da54aeccb9e36752cc42f82a237058d,
+                },
+            };
+            let layer_control_94a88a141bb723d1f632ca1df38c9402 = L.control.layers(
+                layer_control_94a88a141bb723d1f632ca1df38c9402_layers.base_layers,
+                layer_control_94a88a141bb723d1f632ca1df38c9402_layers.overlays,
+                {"autoZIndex": true, "collapsed": false, "position": "topright"}
+            ).addTo(map_3f5113e286b53cf597b223162c92b6fd);
+
+        
+</script>
+</html>
